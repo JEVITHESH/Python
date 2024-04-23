@@ -1,0 +1,30 @@
+You are developing a voting system for a school election. Write a Python program to count the number of votes each candidate receives and store the results in a dictionary.
+Sample Dictionary: votes = {'Candidate1': 150, 'Candidate2': 200, 'Candidate3': 180}
+Sample Output: Candidate1: 150, Candidate2: 200, Candidate3: 180
+Note : input from the user
+votes = {}
+num_candidates = int(input("Enter the number of candidates: "))
+
+for i in range(1, num_candidates + 1):
+    candidate_name = input(f"Enter the name of candidate {i}: ")
+    vote_count = int(input(f"Enter the number of votes for {candidate_name}: "))
+    votes[candidate_name] = vote_count
+print("Dictionary of votes:", votes)
+
+print("Output:")
+for candidate, count in votes.items():
+    print(f"{candidate}: {count}")
+Sample Output :
+Enter the number of candidates: 3
+Enter the name of candidate 1: Candidate1
+Enter the number of votes for Candidate1: 150
+Enter the name of candidate 2: Candidate2
+Enter the number of votes for Candidate2: 200
+Enter the name of candidate 3: Candidate3
+Enter the number of votes for Candidate3: 180
+
+Dictionary of votes: {'Candidate1': 150, 'Candidate2': 200, 'Candidate3': 180}
+Output:
+Candidate1: 150
+Candidate2: 200
+Candidate3: 180
