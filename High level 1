@@ -1,0 +1,26 @@
+You are part of a team developing an inventory management system for a retail company. The system needs to track product availability across multiple warehouses. Each warehouse is represented as a list of tuples, where each tuple contains the product identifier and the quantity available. Your task is to implement a feature that checks if a given product is available in any of the warehouses and returns the total quantity available.
+Design a Python program to implement the inventory management system. Create lists to represent three warehouses, each containing tuples of product identifiers and quantities available. Then, prompt the user to enter a product identifier and check if the product is available in any of the warehouses. If available, display the total quantity available across all warehouses; otherwise, display a message indicating that the product is out of stock.
+
+warehouse1 = [("product1", 50), ("product2", 30), ("product3", 20)]
+warehouse2 = [("product4", 40), ("product2", 20), ("product5", 60)]
+warehouse3 = [("product6", 70), ("product3", 10), ("product7", 25)]
+
+product_id = input("Enter product identifier: ")
+
+total_quantity = 0
+found = False
+
+for warehouse in [warehouse1, warehouse2, warehouse3]:
+    for item in warehouse:
+        if item[0] == product_id:
+            total_quantity += item[1]
+            found = True
+            break  
+
+if found:
+    print(f"Total quantity of product {product_id}: {total_quantity}")
+else:
+    print("Product is out of stock.")
+
+Sample Output :
+Total quantity of product product3: 30
