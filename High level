@@ -1,0 +1,41 @@
+You work for a finance company that manages investment portfolios for clients. Your team is tasked with analyzing the performance of various investment instruments over time. Each instrument's performance is represented as a list of tuples, where each tuple contains the date and the corresponding value of the investment. Your task is to identify the investment instrument that has shown the highest growth rate over a specified period.
+Design a Python program to analyze the performance of investment instruments. Create lists to represent the performance data of three investment instruments over time. Then, prompt the user to enter a start and end date for the analysis period. Calculate the growth rate for each instrument over the specified period and determine which instrument has shown the highest growth rate. Display the name of the instrument along with its growth rate.
+instrument1 = [("2023-01-01", 1000), ("2023-03-01", 1200), ("2023-06-01", 1400)]
+instrument2 = [("2023-01-01", 2000), ("2023-03-01", 1800), ("2023-06-01", 2500)]
+instrument3 = [("2023-01-01", 1500), ("2023-03-01", 1700), ("2023-06-01", 1800)]
+
+start_date = input("Enter start date (YYYY-MM-DD): ")
+end_date = input("Enter end date (YYYY-MM-DD): ")
+
+max_growth_rate = -1
+best_instrument = None
+
+def date_to_int(date):
+    year, month, day = map(int, date.split('-'))
+    return year * 10000 + month * 100 + day
+
+for instrument, data in [("Instrument 1", instrument1), ("Instrument 2", instrument2), ("Instrument 3", instrument3)]:
+    start_value = None
+    end_value = None
+
+    for date, value in data:
+        if date_to_int(date) == date_to_int(start_date):
+            start_value = value
+        elif date_to_int(date) == date_to_int(end_date):
+            end_value = value
+
+    if start_value is not None and end_value is not None:
+        growth_rate = ((end_value - start_value) / start_value) * 100
+        print(f"{instrument}: Growth rate = {growth_rate:.2f}%")
+
+        if growth_rate > max_growth_rate:
+            max_growth_rate = growth_rate
+            
+print(f"The instrument with the highest growth rate is {best_instrument} with a growth rate of {max_growth_rate:.2f}%.")
+
+
+Sample Output :
+Instrument 1: Growth rate = 40.00%
+Instrument 2: Growth rate = 25.00%
+Instrument 3: Growth rate = 20.00%
+The instrument with the highest growth rate is Instrument 1 with a growth rate of 40.00%.
