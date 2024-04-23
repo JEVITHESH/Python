@@ -1,0 +1,13 @@
+people = [("Alice", 25), ("Bob", 30), ("Charlie", 40), ("David", 35)]
+total_age = 0
+count = 0
+
+for person in people:
+    age = person[1]
+    total_age += age
+    
+    count += 1
+average_age = total_age / count
+print("Average age:", average_age)
+
+Sample Output : Average age: 32.5
