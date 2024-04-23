@@ -1,0 +1,6 @@
+tuple1 = (1, 2, 3)
+tuple2 = (4, 5, 6)
+new_tuple = tuple1 + tuple2
+print("Concatenated tuple:", new_tuple)
+Sample output:
+Concatenated tuple: (1, 2, 3, 4, 5, 6)
