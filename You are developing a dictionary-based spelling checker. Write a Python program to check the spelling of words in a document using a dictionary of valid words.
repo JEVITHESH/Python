@@ -1,0 +1,20 @@
+You are developing a dictionary-based spelling checker. Write a Python program to check the spelling of words in a document using a dictionary of valid words.
+Sample Dictionary: valid_words = {'apple', 'banana', 'orange', 'grape'}
+Sample Output: Misspelled words: ['aple', 'bannana']
+valid_words = {'apple', 'banana', 'orange', 'grape'}
+
+document = input("Enter the document: ")
+
+words = document.split()
+
+misspelled_words = []
+
+for word in words:
+
+    if word.lower() not in valid_words:
+        misspelled_words.append(word)
+
+print("Misspelled words:", misspelled_words)
+Sample output :
+Enter the document: apple banana grape strawberry
+Misspelled words: ['strawberry']
