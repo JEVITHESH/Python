@@ -1,0 +1,8 @@
+people = [("Alice", 25), ("Bob", 30), ("Charlie", 35)]
+people_dict = {}
+for name, age in people:
+    people_dict[name] = age
+print("Dictionary with names as keys and ages as values:", people_dict)
+
+Sample Output: 
+Dictionary with names as keys and ages as values: {'Alice': 25, 'Bob': 30, 'Charlie': 35}
