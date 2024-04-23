@@ -1,0 +1,38 @@
+You are working for a social media analytics company. Your team is responsible for analyzing user engagement metrics to provide insights to clients. One of your tasks involves identifying trending topics based on user comments. Each comment is represented as a tuple containing the comment text and the number of likes it received. Your goal is to develop a function to identify the top trending topics based on the frequency of specific keywords mentioned in the comments.
+Design a Python function identify_trending_topics (comments: List[Tuple[str, int]], keywords: List[str]) -> List[str] that takes a list of comment tuples and a list of keywords as input. Each comment tuple consists of the comment text and the number of likes it received. The function should identify the top trending topics by counting the frequency of each keyword mentioned in the comments and return a list of keywords sorted in descending order of their frequency.
+Ensure your implementation efficiently handles cases where multiple keywords have the same frequency. Provide explanations for your design choices and any assumptions made.
+
+comments = [
+    ("Great product, love the features!", 50),
+    ("The customer service was terrible, won't recommend.", 20),
+    ("Best purchase ever, highly recommended.", 100),
+    ("The delivery was delayed, very disappointed.", 10),
+    ("Amazing quality, exceeded my expectations.", 80)
+]
+
+
+keywords = ["product", "customer service", "recommend", "delivery", "quality"]
+
+
+keyword_freq = {keyword: 0 for keyword in keywords}
+
+for comment, likes in comments:
+    for keyword in keywords:
+        if keyword in comment.lower():
+            keyword_freq[keyword] += 1
+
+
+sorted_keywords = sorted(keyword_freq.items(), key=lambda x: x[1], reverse=True)
+
+top_trending_topics = [keyword for keyword, freq in sorted_keywords]
+
+print("Top Trending Topics:")
+for topic in top_trending_topics:
+    print(topic)
+Sample Output :
+Top Trending Topics:
+product
+quality
+recommend
+delivery
+customer service
