@@ -1,0 +1,13 @@
+data = {'a': 10, 'b': 20, 'c': 30, 'd': 15, 'e': 25}
+
+unique_values = sorted(set(data.values()), reverse=True)
+if len(unique_values) >= 2:
+    second_largest = unique_values[1]
+    keys = [key for key, value in data.items() if value == second_largest]
+    print(f"The second largest value in the dictionary is {second_largest}.")
+    print(f"It appears with key(s): {keys}")
+else:
+    print("There is no second largest value in the dictionary.")
+Sample Output :
+The second largest value in the dictionary is 25.
+It appears with key(s): ['e']
