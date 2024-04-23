@@ -1,0 +1,15 @@
+Sample Text: "This is a sample text. This text contains sample words."
+Sample Output: {'This': 2, 'is': 1, 'a': 1, 'sample': 2, 'text.': 1, 'contains': 1, 'words.': 1}
+text = input("Enter the text: ")
+words = text.split()
+word_freq = {}
+for word in words:
+    word = word.strip('.,?!')
+    word = word.lower()
+    word_freq[word] = word_freq.get(word, 0) + 1
+print("Word frequency count:")
+print(word_freq)
+sample output :
+Enter the text: This is a sample text. This text contains sample words.
+Word frequency count:
+{'this': 2, 'is': 1, 'a': 1, 'sample': 2, 'text': 1, 'contains': 1, 'words': 1}
