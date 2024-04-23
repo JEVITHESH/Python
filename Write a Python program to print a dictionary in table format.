@@ -1,0 +1,29 @@
+data = {'Name': ['John', 'Alice', 'Bob'],
+        'Age': [25, 30, 35],
+        'City': ['New York', 'Paris', 'London']}
+max_lengths = {key: max(len(str(key)), max(len(str(x)) for x in values)) for key, values in data.items()}
+print("|", end="")
+for key, max_length in max_lengths.items():
+    print(f" {key.ljust(max_length)} |", end="")
+print()
+print("+", end="")
+for _, max_length in max_lengths.items():
+    print(f"-{'-' * max_length}-+", end="")
+print()
+for i in range(len(data['Name'])):
+    print("|", end="")
+    for key, values in data.items():
+        print(f" {str(values[i]).ljust(max_lengths[key])} |", end="")
+    print()
+print("+", end="")
+for _, max_length in max_lengths.items():
+    print(f"-{'-' * max_length}-+", end="")
+print()
+
+Sample Output :
+| Name   | Age | City    |
++--------+-----+---------+
+| John   | 25  | New York|
+| Alice  | 30  | Paris   |
+| Bob    | 35  | London  |
++--------+-----+---------+
