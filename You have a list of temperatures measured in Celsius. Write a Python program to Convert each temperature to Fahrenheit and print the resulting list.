@@ -1,0 +1,8 @@
+temperatures_celsius = [0, 10, 20, 30, 40]
+temperatures_fahrenheit = []
+for celsius in temperatures_celsius:
+    fahrenheit = (celsius * 9/5) + 32
+    temperatures_fahrenheit.append(fahrenheit)
+print("Temperatures in Fahrenheit:", temperatures_fahrenheit)
+Sample Output :
+Temperatures in Fahrenheit: [32.0, 50.0, 68.0, 86.0, 104.0]
