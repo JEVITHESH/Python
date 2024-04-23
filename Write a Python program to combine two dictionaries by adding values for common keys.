@@ -1,0 +1,15 @@
+dict1 = {'a': 10, 'b': 20, 'c': 30}
+dict2 = {'b': 30, 'c': 40, 'd': 50}
+combined_dict ={}
+for key in dict1:
+    if key in dict2:
+        combined_dict[key] = dict1[key] + dict2[key]
+    else:
+        combined_dict[key] = dict1[key]
+for key in dict2dict2:
+    if key not in combined_dict:
+        combined_dict[key] = dict2[key]
+
+print("Combined dictionary:", combined_dict)
+Sample Output :
+Combined dictionary: {'a': 10, 'b': 50, 'c': 70, 'd': 50}
