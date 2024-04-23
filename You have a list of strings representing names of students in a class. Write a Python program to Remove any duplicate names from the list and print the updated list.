@@ -1,0 +1,8 @@
+student_names = ["Alice", "Bob", "Charlie", "Alice", "David", "Bob", "Eve"]
+unique_names = []
+for name in student_names:
+    if name not in unique_names:
+        unique_names.append(name)
+print("Updated list of unique names:", unique_names)
+Sample Output :
+Updated list of unique names: ['Alice', 'Bob', 'Charlie', 'David', 'Eve']
