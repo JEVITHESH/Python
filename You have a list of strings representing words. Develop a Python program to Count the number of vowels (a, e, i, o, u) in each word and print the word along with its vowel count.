@@ -1,0 +1,13 @@
+words = ["hello", "world", "python", "programming", "example"]
+for word in words:
+    vowel_count = 0
+    for char in word:
+        if char.lower() in ['a', 'e', 'i', 'o', 'u']:
+            vowel_count += 1
+    print(f"Word: {word}, Vowel Count: {vowel_count}")
+Sample Output :
+Word: hello, Vowel Count: 2
+Word: world, Vowel Count: 1
+Word: python, Vowel Count: 1
+Word: programming, Vowel Count: 3
+Word: example, Vowel Count: 3
