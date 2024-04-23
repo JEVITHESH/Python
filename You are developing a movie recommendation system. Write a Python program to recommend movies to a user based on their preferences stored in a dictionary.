@@ -1,0 +1,25 @@
+You are developing a movie recommendation system. Write a Python program to recommend movies to a user based on their preferences stored in a dictionary.
+Sample Dictionary: preferences = {'Action': ['The Dark Knight', 'Inception'], 'Comedy': ['The Hangover', 'Superbad']}
+Sample Output: Recommendations: ['The Dark Knight', 'Inception']
+preferences = {}
+num_genres = int(input("Enter the number of genres: "))
+for _ in range(num_genres):
+    genre = input("Enter the genre: ")
+    movies = input(f"Enter the movies for {genre} (comma-separated): ").split(',')
+    preferences[genre] = [movie.strip() for movie in movies]
+user_preferences = input("Enter your movie preferences (comma-separated): ").split(',')
+recommendations = []
+for genre, movies in preferences.items():
+    recommended_movies = [movie for movie in movies if movie not in user_preferences]
+    recommendations.extend(recommended_movies)
+
+
+print("Recommendations:", recommendations)
+Sample Output :
+Enter the number of genres: 2
+Enter the genre: Action
+Enter the movies for Action (comma-separated): The Dark Knight, Inception
+Enter the genre: Comedy
+Enter the movies for Comedy (comma-separated): The Hangover, Superbad
+Enter your movie preferences (comma-separated): Inception, The Hangover
+Recommendations: ['The Dark Knight', 'Superbad']
