@@ -1,0 +1,5 @@
+data = {'b': 2, 'a': 1, 'c': 3}
+sorted_data = dict(sorted(data.items()))
+print("Sorted dictionary by keys:", sorted_data)
+Sample Output :
+Sorted dictionary by keys: {'a': 1, 'b': 2, 'c': 3}
