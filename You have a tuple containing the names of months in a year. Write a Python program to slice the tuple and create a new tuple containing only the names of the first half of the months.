@@ -1,0 +1,6 @@
+
+months = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+first_half_months = months[:len(months)//2]
+print("Names of the first half of the months:", first_half_months)
+Sample Output :
+Names of the first half of the months: ('January', 'February', 'March', 'April', 'May', 'June')
