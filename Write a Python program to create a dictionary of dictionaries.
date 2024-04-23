@@ -1,0 +1,6 @@
+inner_dict1 = {'a': 1, 'b': 2, 'c': 3}
+inner_dict2 = {'x': 10, 'y': 20, 'z': 30}
+outer_dict = {'dict1': inner_dict1, 'dict2': inner_dict2}
+print("Dictionary of dictionaries:", outer_dict)
+Sample Output :
+Dictionary of dictionaries: {'dict1': {'a': 1, 'b': 2, 'c': 3}, 'dict2': {'x': 10, 'y': 20, 'z': 30}}
