@@ -1,0 +1,16 @@
+dict_of_lists = {'Name': ['John', 'Alice', 'Bob'],
+                 'Age': [25, 30, 35],
+                 'City': ['New York', 'Paris', 'London']}
+
+list_length =len(next(iter(dict_of_lists.values())))
+list_of_dicts =[]
+for i in range(list_length):
+    new_dict = {]
+    for key, values in dict_of_lists.items():
+        new_dict[key] = values[i]
+for dictionary in list_of_dicts:
+    print(dictionary)
+Sample Output:
+{'Name': 'John', 'Age': 25, 'City': 'New York'}
+{'Name': 'Alice', 'Age': 30, 'City': 'Paris'}
+{'Name': 'Bob', 'Age': 35, 'City': 'London'}
