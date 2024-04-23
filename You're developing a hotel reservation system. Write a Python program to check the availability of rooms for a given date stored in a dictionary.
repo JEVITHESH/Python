@@ -1,0 +1,18 @@
+You're developing a hotel reservation system. Write a Python program to check the availability of rooms for a given date stored in a dictionary.
+Sample Dictionary: room_availability = {'Standard': {'2024-04-12': 10, '2024-04-13': 5}, 'Deluxe': {'2024-04-12': 5, '2024-04-13': 2}}
+Sample Test Case: '2024-04-13'
+Sample Output: {'Standard': 5, 'Deluxe': 2}
+
+room_availability = {
+    'Standard': {'2024-04-12': 10, '2024-04-13': 5},
+    'Deluxe': {'2024-04-12': 5, '2024-04-13': 2}
+}
+
+date = input("Enter the date (YYYY-MM-DD): ")
+
+availability = {room_type: availability.get(date, 0) for room_type, availability in room_availability.items()}
+
+print("Room availability for", date + ":", availability)
+Sample Output:
+Enter the date (YYYY-MM-DD): 2024-04-13
+Room availability for 2024-04-13: {'Standard': 5, 'Deluxe': 2}
