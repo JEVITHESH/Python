@@ -1,0 +1,5 @@
+data = {'a': 1, 'b': 2, 'c': 3}
+data['b'] = 20
+print("Updated dictionary:", data)
+Sample Output :
+Updated dictionary: {'a': 1, 'b': 20, 'c': 3}
