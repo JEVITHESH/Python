@@ -1,0 +1,28 @@
+You're creating a budget tracking application. Write a Python program to calculate the total expenses for each category stored in a dictionary.
+Sample Dictionary: expenses = {'Food': [100, 150], 'Transportation': [50, 75], 'Entertainment': [75, 100]}
+Sample Test Case: expenses
+Sample Output: {'Food': 250, 'Transportation': 125, 'Entertainment': 175}
+
+expenses = {}
+
+num_categories = int(input("Enter the number of categories: "))
+
+for _ in range(num_categories):
+    category = input("Enter the category: ")
+    amounts = input(f"Enter the expenses for {category} (comma-separated): ").split(',')
+    expenses[category] = [int(amount.strip()) for amount in amounts]
+
+total_expenses = {category: sum(amounts) for category, amounts in expenses.items()}
+
+print("Total expenses:")
+print(total_expenses)
+Sample output :
+Enter the number of categories: 3
+Enter the category: Food
+Enter the expenses for Food (comma-separated): 100, 150
+Enter the category: Transportation
+Enter the expenses for Transportation (comma-separated): 50, 75
+Enter the category: Entertainment
+Enter the expenses for Entertainment (comma-separated): 75, 100
+Total expenses:
+{'Food': 250, 'Transportation': 125, 'Entertainment': 175}
