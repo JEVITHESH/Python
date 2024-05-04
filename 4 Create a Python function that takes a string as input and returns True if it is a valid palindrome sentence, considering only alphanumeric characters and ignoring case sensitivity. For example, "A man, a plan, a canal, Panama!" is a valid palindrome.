@@ -1,0 +1,11 @@
+Create a Python function that takes a string as input and returns True if it is a valid palindrome sentence, considering only alphanumeric characters and ignoring case sensitivity. For example, "A man, a plan, a canal, Panama!" is a valid palindrome.
+
+import string
+
+def is_valid_palindrome(input_string):
+    clean_string = ''.join(char.lower() for char in input_string if char.isalnum())
+    
+    return clean_string == clean_string[::-1]
+
+input_string = "A man, a plan, a canal, Panama!"
+print(is_valid_palindrome(input_string))  
