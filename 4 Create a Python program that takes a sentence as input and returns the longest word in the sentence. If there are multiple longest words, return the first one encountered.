@@ -1,0 +1,19 @@
+Create a Python program that takes a sentence as input and returns the longest word in the sentence. If there are multiple longest words, return the first one encountered.
+def longest_word(input_sentence):
+   
+    words = input_sentence.split() 
+    longest_word = ""
+    max_length = 0
+   
+    for word in words:
+       
+        word = ''.join(char for char in word if char.isalnum())
+        if len(word) > max_length:
+            longest_word = word
+            max_length = len(word)
+    
+    return longest_word
+
+
+input_sentence = "This is a sample sentence with multiple words"
+print(longest_word(input_sentence))  
