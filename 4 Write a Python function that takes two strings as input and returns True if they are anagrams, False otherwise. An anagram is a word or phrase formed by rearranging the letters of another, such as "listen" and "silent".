@@ -1,0 +1,10 @@
+Write a Python function that takes two strings as input and returns True if they are anagrams, False otherwise. An anagram is a word or phrase formed by rearranging the letters of another, such as "listen" and "silent".
+
+def are_anagrams(str1, str2):
+    str1 = ''.join(char.lower() for char in str1 if char.isalpha())
+    str2 = ''.join(char.lower() for char in str2 if char.isalpha())
+    
+    return sorted(str1) == sorted(str2)
+string1 = "listen"
+string2 = "silent"
+print(are_anagrams(string1, string2))  # Output: True
