@@ -1,0 +1,21 @@
+Create a Python program that takes a string as input and prints the count of each character in the string, ignoring case sensitivity. For example, for input "Hello World", the output should be:
+'h': 1
+'e': 1
+'l': 3
+'o': 2
+' ': 1
+'w': 1
+'r': 1
+'d': 1
+def count_characters(input_string):
+    input_string = input_string.lower()
+    char_count = {}
+    for char in input_string:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+    for char, count in char_count.items():
+        print(f"'{char}': {count}")
+input_string = "Hello World"
+count_characters(input_string)
