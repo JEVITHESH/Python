@@ -1,0 +1,17 @@
+Develop a Python program that removes all duplicates from a given string and prints the result. For example, for input "hello", the output should be "helo".
+def remove_duplicates(input_string):
+   
+    unique_chars = set()
+   
+    result = ""
+
+    for char in input_string:
+        if char not in unique_chars:l
+            unique_chars.add(char)
+            result += char
+    
+    return result
+
+# Test the function
+input_string = "hello"
+print(remove_duplicates(input_string)) 
