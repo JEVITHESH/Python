@@ -1,0 +1,15 @@
+You're building an email sending application. Design a Python function that takes a user's first name and last name as input and generates an email address for them. The email address should be in the format "firstname.lastname@example.com".
+def generate_email(first_name, last_name):
+    
+    email_prefix = f"{first_name.lower()}.{last_name.lower()}"
+    
+    domain = "example.com"
+    
+    email_address = f"{email_prefix}@{domain}"
+    
+    return email_address
+
+first_name = input("Enter your first name: ")
+last_name = input("Enter your last name: ")
+
+print("Generated email address:", generate_email(first_name, last_name))
