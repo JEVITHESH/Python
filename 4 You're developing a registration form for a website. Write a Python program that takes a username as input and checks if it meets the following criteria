@@ -1,0 +1,23 @@
+You're developing a registration form for a website. Write a Python program that takes a username as input and checks if it meets the following criteria:
+Contains only alphanumeric characters (letters and numbers)
+Starts with a letter
+Is between 6 and 12 characters long
+
+def check_username(username):
+   
+    if len(username) < 6 or len(username) > 12:
+        return False
+  
+    if not username[0].isalpha():
+        return False
+    if not username.isalnum():
+        return False
+    
+    return True
+
+username = input("Enter your username: ")
+
+if check_username(username):
+    print("Username is valid.")
+else:
+    print("Username is not valid.")
