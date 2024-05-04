@@ -1,0 +1,12 @@
+Develop a Python program that takes a string as input and returns True if it is a pangram, False otherwise. A pangram is a sentence containing every letter of the alphabet at least once. Ignore case sensitivity.
+import string
+
+def is_pangram(input_string):
+    input_string = input_string.lower()
+
+    letters = set(input_string)
+    letters = {char for char in letters if char.isalpha()}
+   
+    return len(letters) == 26
+input_string = "The quick brown fox jumps over the lazy dog"
+print(is_pangram(input_string))  # Output: True
