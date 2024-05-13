@@ -1,0 +1,94 @@
+import tkinter as tk
+
+class MenuItem:
+    def __init__(self, name, price_inr):
+        self.name = name
+        self.price_inr = price_inr
+
+class Order:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item, quantity):
+        self.items.append({"item": item, "quantity": quantity})
+
+    def calculate_total(self):
+        total = 0
+        for order_item in self.items:
+            total += order_item["item"].price_inr * order_item["quantity"]
+        return total
+
+class Restaurant:
+    def __init__(self):
+        self.menu = []
+
+    def add_menu_item(self, item):
+        self.menu.append(item)
+
+    def display_menu(self):
+        menu_text = "Menu:\n"
+        for i, item in enumerate(self.menu):
+            menu_text += f"{i+1}. {item.name} - ₹{item.price_inr}\n"
+        return menu_text
+
+def order_item():
+    try:
+        choice_index = int(choice_entry.get()) - 1
+        quantity = int(quantity_entry.get())
+        
+        if choice_index < 0 or choice_index >= len(restaurant.menu):
+            raise ValueError("Invalid choice. Please enter a valid item number.")
+        
+        if quantity <= 0:
+            raise ValueError("Invalid quantity. Quantity must be greater than 0.")
+        
+        item = restaurant.menu[choice_index]
+        order.add_item(item, quantity)
+        order_text.insert(tk.END, f"{quantity} {item.name}(s) added to your order.\n")
+    except ValueError as e:
+        order_text.insert(tk.END, f"Error: {e}\n")
+
+def display_menu():
+    menu_text = restaurant.display_menu()
+    order_text.insert(tk.END, menu_text)
+
+def display_bill():
+    total_bill_inr = order.calculate_total()
+    order_text.insert(tk.END, f"\nTotal Bill: ₹{total_bill_inr:.2f}\n")
+    order_text.insert(tk.END, "Thank you for dining with us!\n")
+
+restaurant = Restaurant()
+restaurant.add_menu_item(MenuItem("Burger", 120))
+restaurant.add_menu_item(MenuItem("Pizza", 250))
+restaurant.add_menu_item(MenuItem("Pasta", 180))
+
+order = Order()
+
+root = tk.Tk()
+root.title("Restaurant Order Management")
+
+menu_label = tk.Label(root, text="Enter the number of the item you want to order:")
+menu_label.grid(row=0, column=0, sticky="w")
+
+choice_entry = tk.Entry(root)
+choice_entry.grid(row=0, column=1)
+
+quantity_label = tk.Label(root, text="Enter the quantity:")
+quantity_label.grid(row=1, column=0, sticky="w")
+
+quantity_entry = tk.Entry(root)
+quantity_entry.grid(row=1, column=1)
+
+order_button = tk.Button(root, text="Order", command=order_item)
+order_button.grid(row=2, column=0, columnspan=2)
+
+menu_display_button = tk.Button(root, text="Display Menu", command=display_menu)
+menu_display_button.grid(row=3, column=0, columnspan=2)
+
+order_text = tk.Text(root)
+order_text.grid(row=4, column=0, columnspan=2)
+
+calculate_button = tk.Button(root, text="Display Bill", command=display_bill)
+calculate_button.grid(row=5, column=0, columnspan=2)
+
+root.mainloop()
