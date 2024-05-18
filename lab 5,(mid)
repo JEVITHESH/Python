@@ -1,0 +1,166 @@
+1. Develop a program that takes a user's score as input and outputs their corresponding grade based on the following grading scale: A (90-100), B (80-89), C (70-79), D (60-69), F (0-59).
+•	Test Case 1: Input score: 85. Expected output: Grade B.
+•	Test Case 2: Input score: 60. Expected output: Grade D.
+•	Test Case 3: Input score: 95. Expected output: Grade A.
+
+def get_grade(score):
+    if 90 <= score <= 100:
+        return "A"
+    elif 80 <= score <= 89:
+        return "B"
+    elif 70 <= score <= 79:
+        return "C"
+    elif 60 <= score <= 69:
+        return "D"
+    elif 0 <= score <= 59:
+        return "F"
+    else:
+        return "Invalid score"
+
+test_cases = [85, 60, 95]
+expected_outputs = ["B", "D", "A"]
+
+for i, test_case in enumerate(test_cases):
+    result = get_grade(test_case)
+    print(f"Input score: {test_case}. Expected output: Grade {expected_outputs[i]}. Actual output: Grade {result}.")
+    
+    
+2. Create a program that simulates a simple ATM machine, prompting the user for their account balance and withdrawal amount, then outputs whether the transaction is successful or not based on the available balance and withdrawal amount.
+•	Test Case 1: Account balance: $1000, Withdrawal amount: $500. Expected output: Transaction successful.
+•	Test Case 2: Account balance: $200, Withdrawal amount: $300. Expected output: Insufficient funds.
+•	Test Case 3: Account balance: $1500, Withdrawal amount: $1500. Expected output: Transaction successful
+
+def atm_simulation():
+    # Prompt the user to enter their account balance
+    try:
+        account_balance = float(input("Enter your account balance: $"))
+    except ValueError:
+        print("Invalid input. Please enter a valid number for the account balance.")
+        return
+    
+    # Prompt the user to enter the withdrawal amount
+    try:
+        withdrawal_amount = float(input("Enter the withdrawal amount: $"))
+    except ValueError:
+        print("Invalid input. Please enter a valid number for the withdrawal amount.")
+        return
+    
+    # Check if the withdrawal amount is less than or equal to the account balance
+    if withdrawal_amount <= account_balance:
+        print("Transaction successful.")
+    else:
+        print("Insufficient funds.")
+        
+# Run the ATM simulation
+if _name_ == "_main_":
+    atm_simulation()
+    
+3. Design a program that calculates the roots of a quadratic equation ax^2 + bx + c = 0 based on user input for the coefficients a, b, and c, and outputs the roots
+•	Test Case 1: Coefficients: a=1, b=-3, c=2. Expected output: Roots: 2.0, 1.0.
+•	Test Case 2: Coefficients: a=2, b=5, c=2. Expected output: Roots: -0.5, -2.0.
+•	Test Case 3: Coefficients: a=1, b=-4, c=4. Expected output: Roots: 2.0, 2.0.
+
+import math
+
+def calculate_roots(a, b, c):
+    # Calculate the discriminant
+    discriminant = b**2 - 4*a*c
+    
+    if discriminant > 0:
+        # Two distinct real roots
+        root1 = (-b + math.sqrt(discriminant)) / (2*a)
+        root2 = (-b - math.sqrt(discriminant)) / (2*a)
+        return root1, root2
+    elif discriminant == 0:
+        # One real root (double root)
+        root = -b / (2*a)
+        return root, root
+    else:
+        # No real roots
+        return None, None
+
+def main():
+    try:
+        # Prompt user for coefficients a, b, and c
+        a = float(input("Enter coefficient a: "))
+        b = float(input("Enter coefficient b: "))
+        c = float(input("Enter coefficient c: "))
+        
+        # Calculate roots
+        root1, root2 = calculate_roots(a, b, c)
+        
+        if root1 is not None and root2 is not None:
+            print(f"Roots: {root1}, {root2}")
+        else:
+            print("No real roots.")
+    
+    except ValueError:
+        print("Invalid input. Please enter valid numbers for the coefficients.")
+
+if _name_ == "_main_":
+    main()
+    
+4. Develop a program that takes a user's age and gender as input and outputs their recommended heart rate range during exercise based on the American Heart Association's guidelines.
+•	Test Case 1: Age: 30, Gender: Male. Expected output: 93 - 157 bpm.
+•	Test Case 2: Age: 45, Gender: Female. Expected output: 88 - 149 bpm.
+•	Test Case 3: Age: 55, Gender: Male. Expected output: 85 - 145 bpm.
+
+
+def calculate_target_heart_rate(age, gender):
+    if gender.lower() == 'male':
+        max_heart_rate = 220 - age
+    elif gender.lower() == 'female':
+        max_heart_rate = 226 - age
+    else:
+        return "Invalid gender input. Please enter 'male' or 'female'."
+
+    lower_limit = int(0.5 * max_heart_rate)
+    upper_limit = int(0.85 * max_heart_rate)
+
+    return lower_limit, upper_limit
+
+def main():
+    age = int(input("Enter your age: "))
+    gender = input("Enter your gender (male/female): ")
+
+    lower_limit, upper_limit = calculate_target_heart_rate(age, gender)
+    if isinstance(lower_limit, int) and isinstance(upper_limit, int):
+        print("Recommended heart rate range during exercise:", lower_limit, "-", upper_limit, "bpm")
+    else:
+        print(lower_limit)
+
+if _name_ == "_main_":
+    main()
+    
+5.Write a program that prompts the user to enter a month and year and then outputs the number of days in that month (considering leap years for February).
+•	Test Case 1: Input month: February, year: 2020. Expected output: 29 days.
+•	Test Case 2: Input month: April, year: 2023. Expected output: 30 days.
+•	Test Case 3: Input month: December, year: 2021. Expected output: 31 days.
+
+
+import calendar
+
+def get_days_in_month(month, year):
+    # Capitalizing the first letter of the month for consistency
+    month = month.capitalize()
+    
+    # Getting the index of the month (1 for January, 2 for February, ..., 12 for December)
+    month_index = list(calendar.month_name).index(month)
+    
+    # Using the monthrange function to get the number of days in the specified month and year
+    num_days = calendar.monthrange(year, month_index)[1]
+    
+    return num_days
+
+def main():
+    month = input("Enter the month: ")
+    year = int(input("Enter the year: "))
+    
+    days_in_month = get_days_in_month(month, year)
+    
+    print(f"Number of days in {month}, {year}: {days_in_month} days")
+
+if _name_ == "_main_":
+    main()
+    
+    
