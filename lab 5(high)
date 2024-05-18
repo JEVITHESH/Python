@@ -1,0 +1,76 @@
+1. You are developing a Python program for an online food ordering system that includes decision-making elements. The system should allow users to browse a menu, add items to their cart, specify delivery details, and place orders. Additionally, the system should dynamically apply discounts based on order totals, validate delivery addresses for availability, and adjust delivery times based on current order volume.
+Your program should include the following functionalities incorporating decision-making logic:
+Dynamic Discounts: Implement a system that automatically applies discounts based on the total amount of the order. For example, offer a 10% discount for orders above $50 and a 15% discount for orders above $100.
+•	Test Case Description: Verify that discounts are applied correctly based on the total order amount.
+•	Input: User adds items to the cart, resulting in different total amounts.
+•	Expected Output: Discounts are applied according to predefined thresholds, and the order total reflects the correct discounted amount.
+
+Address Validation: Validate delivery addresses to ensure they are within the delivery radius of the restaurant. If the address is outside the delivery area, prompt the user to choose another address or opt for pickup.
+•	Test Case Description: Test the system's ability to validate delivery addresses.
+•	Input: User enters different delivery addresses, some within the delivery radius and some outside.
+•	Expected Output: Valid addresses are accepted, while invalid addresses prompt the user to choose another address or opt for pickup.
+
+
+class MenuItem:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+class ShoppingCart:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def calculate_total(self):
+        return sum(item.price for item in self.items)
+
+class OrderSystem:
+    DISCOUNT_THRESHOLDS = {
+        50: 0.10,
+        100: 0.15
+    }
+
+    def __init__(self):
+        self.shopping_cart = ShoppingCart()
+
+    def apply_discount(self, total_amount):
+        discount_rate = 0
+        for threshold, rate in self.DISCOUNT_THRESHOLDS.items():
+            if total_amount >= threshold:
+                discount_rate = max(discount_rate, rate)
+        return total_amount * (1 - discount_rate)
+
+    def validate_address(self, address):
+        # Add logic to validate address within delivery radius
+        pass
+
+    def place_order(self, delivery_address):
+        total_amount = self.shopping_cart.calculate_total()
+        discounted_amount = self.apply_discount(total_amount)
+        if self.validate_address(delivery_address):
+            # Proceed with order
+            print(f"Order total: ${discounted_amount:.2f}")
+            # Add logic to adjust delivery time based on order volume
+        else:
+            print("Delivery address is not valid. Please choose another address or opt for pickup.")
+
+def main():
+    order_system = OrderSystem()
+
+    # Test dynamic discounts
+    cart = order_system.shopping_cart
+    cart.add_item(MenuItem("Pizza", 20))
+    cart.add_item(MenuItem("Burger", 40))
+    cart.add_item(MenuItem("Salad", 35))
+    total_amount = cart.calculate_total()
+    discounted_amount = order_system.apply_discount(total_amount)
+    print(f"Total amount: ${total_amount:.2f}, Discounted amount: ${discounted_amount:.2f}")
+
+    # Test address validation
+    delivery_address = "123 Main St, City, State, ZIP"
+    order_system.validate_address(delivery_address)
+
+if __name__ == "__main__":
+    main()
